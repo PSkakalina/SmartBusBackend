@@ -1,0 +1,188 @@
+openapi: "3.0.3"
+info:
+  title: "backend API"
+  description: "backend API"
+  version: "1.0.0"
+servers:
+  - url: "https://backend"
+paths:
+  /:
+    get:
+      description: ""
+      responses:
+        "200":
+          description: "OK"
+          content:
+            text/plain:
+              schema:
+                type: "string"
+              examples:
+                Example#1:
+                  value: "Hello World!"
+    post:
+      description: ""
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/AuthResponse"
+  /routes:
+    get:
+      description: "asdasdasdasd"
+      parameters:
+        - name: "type"
+          in: "query"
+          required: false
+          schema:
+            type: "string"
+        - name: "route"
+          in: "query"
+          required: false
+          schema:
+            type: "string"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/AllRoutesResponse"
+  /routes/{id}:
+    get:
+      description: ""
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+      responses:
+        "400":
+          description: "Bad Request"
+          content:
+            '*/*':
+              schema:
+                type: "string"
+              examples:
+                Example#1:
+                  value: "id must be an integer"
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/Route"
+        "404":
+          description: "Not Found"
+          content:
+            '*/*':
+              schema:
+                type: "object"
+  /user/{login}:
+    get:
+      description: ""
+      parameters:
+        - name: "login"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/User"
+        "404":
+          description: "Not Found"
+          content:
+            '*/*':
+              schema:
+                type: "object"
+components:
+  schemas:
+    User:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          format: "int32"
+        login:
+          type: "string"
+        name:
+          type: "string"
+    Token:
+      type: "object"
+      properties:
+        token:
+          type: "string"
+        type:
+          type: "string"
+    AuthResponse:
+      type: "object"
+      properties:
+        user:
+          $ref: "#/components/schemas/User"
+        token:
+          $ref: "#/components/schemas/Token"
+    AllRoutesResponse:
+      type: "object"
+      properties: { }
+    LatLng:
+      type: "object"
+      properties:
+        lat:
+          type: "number"
+          format: "double"
+        lng:
+          type: "number"
+          format: "double"
+    Trace:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          format: "int32"
+        latLng:
+          $ref: "#/components/schemas/LatLng"
+        stop:
+          type: "integer"
+          format: "int32"
+    Stop:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          format: "int32"
+        name:
+          type: "string"
+        len:
+          type: "integer"
+          format: "int32"
+        trace:
+          $ref: "#/components/schemas/Trace"
+    Route:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          format: "int32"
+        route:
+          type: "string"
+        name:
+          type: "string"
+        transportType:
+          type: "string"
+          enum:
+            - "value"
+            - "BUS"
+            - "TROLLEY_BUS"
+            - "TRAM"
+            - "Minibus"
+        firstStop:
+          $ref: "#/components/schemas/Stop"
+        lastStop:
+          $ref: "#/components/schemas/Stop"
