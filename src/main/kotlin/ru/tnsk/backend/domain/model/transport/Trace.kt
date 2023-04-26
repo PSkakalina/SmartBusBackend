@@ -7,5 +7,5 @@ import ru.tnsk.backend.domain.model.common.LatLng
 data class Trace(
     val id: Int,
     val latLng: LatLng,
-    val stop: Int? = null
+    val stop: Stop? = null
 )

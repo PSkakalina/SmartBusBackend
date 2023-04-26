@@ -6,6 +6,7 @@ import ru.tnsk.backend.plugins.*
 
 fun main(args: Array<String>): Unit = EngineMain.main(args)
 
+@Suppress("unused")
 fun Application.module() {
     configureKoin()
     configureSecurity()

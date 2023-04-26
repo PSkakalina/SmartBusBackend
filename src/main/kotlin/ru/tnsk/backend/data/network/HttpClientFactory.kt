@@ -17,7 +17,7 @@ class HttpClientFactory {
             })
         }
 
-        install(Logging) { // todo remove
+        install(Logging) {
             level = LogLevel.NONE
         }
     }

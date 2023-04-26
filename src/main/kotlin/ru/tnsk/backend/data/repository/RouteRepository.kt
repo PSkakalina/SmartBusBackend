@@ -1,7 +1,7 @@
 package ru.tnsk.backend.data.repository
 
 import com.github.benmanes.caffeine.cache.Caffeine
-import ru.tnsk.backend.data.db.psql.storage.route.RouteStorage
+import ru.tnsk.backend.data.db.psql.storage.RouteStorage
 import ru.tnsk.backend.domain.model.transport.Route
 import ru.tnsk.backend.domain.model.transport.TransportType
 
@@ -23,5 +23,6 @@ class RouteRepository(
 
     fun findRoute(id: Int): Route? = findRouteCache.get(id)
 
-    fun findRoute(transportType: TransportType, route: String): Route? = routeStorage.findRoute(transportType, route)
+    fun findRoute(transportType: TransportType, route: String): Route? =
+        routeStorage.findRoute(transportType, route)
 }

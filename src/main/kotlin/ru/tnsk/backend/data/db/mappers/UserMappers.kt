@@ -1,4 +1,4 @@
-package ru.tnsk.backend.data.db.psql.storage.user
+package ru.tnsk.backend.data.db.mappers
 
 import ru.tnsk.backend.data.db.psql.entity.UserEntity
 import ru.tnsk.backend.domain.model.account.FullUser
@@ -14,5 +14,6 @@ fun UserEntity.asFullUser() = FullUser(
     id.value,
     login,
     name,
+    role,
     passwordHash
 )

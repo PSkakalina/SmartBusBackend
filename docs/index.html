@@ -3775,8 +3775,8 @@
             block.list = replace(block.list)(/bull/g, block.bullet)("hr", "\\n+(?=\\1?(?:[-*_] *){3,}(?:\\n+|$))")("def", "\\n+(?=" + block.def.source + ")")();
             block.blockquote = replace(block.blockquote)("def", block.def)();
             block._tag = "(?!(?:" + "a|em|strong|small|s|cite|q|dfn|abbr|data|time|code" + "|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo" + "|span|br|wbr|ins|del|img)\\b)\\w+(?!:/|[^\\w\\s@]*@)\\b";
-            block.html = replace(block.html)("comment", /<!--[\s\S]*?-->/)("closed", /
-                <(tag
+            block.html = replace(block.html)("comment", /<!--[\s\S]*?-->/)("closed",/
+            <(tag
         )
             [\s\S
         ]

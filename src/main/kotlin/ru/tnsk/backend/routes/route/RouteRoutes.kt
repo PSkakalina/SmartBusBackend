@@ -36,9 +36,6 @@ fun Routing.routeRoutes(
         } ?: call.respond(HttpStatusCode.NotFound)
     }
 
-    /**
-     * asdasdasdasd
-     */
     get(route) {
         val type = call.request.queryParameters["type"]
         val qRoute = call.request.queryParameters["route"]

@@ -2,6 +2,7 @@ package ru.tnsk.backend.domain.repository
 
 import ru.tnsk.backend.domain.model.account.FullUser
 import ru.tnsk.backend.domain.model.account.User
+import ru.tnsk.backend.domain.model.account.UserRole
 
 interface UserRepository {
     fun createUser(
@@ -17,4 +18,6 @@ interface UserRepository {
 
 
     fun getFullUser(login: String): FullUser?
+
+    fun getUserRole(id: Int): UserRole?
 }

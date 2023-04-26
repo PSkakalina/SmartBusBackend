@@ -1,9 +1,9 @@
 package ru.tnsk.backend.data.repository
 
 import io.ktor.util.logging.*
-import ru.tnsk.backend.data.db.psql.storage.route.RouteStorage
-import ru.tnsk.backend.data.db.psql.storage.stop.StopStorage
-import ru.tnsk.backend.data.db.psql.storage.trace.TraceStorage
+import ru.tnsk.backend.data.db.psql.storage.RouteStorage
+import ru.tnsk.backend.data.db.psql.storage.StopStorage
+import ru.tnsk.backend.data.db.psql.storage.TraceStorage
 import ru.tnsk.backend.data.network.models.TracesResponse.RouteTracesWrapper.RouteTraces.Trace
 import ru.tnsk.backend.data.network.storage.NskgtStorage
 
@@ -35,19 +35,37 @@ class ImportRouteRepository(
                         return@routeForEach
                     }
 
+                val firstStopSaved = stopStorage.createOrGet(
+                    firstStop.id!!,
+                    firstStop.name!!,
+                    firstStop.lat,
+                    firstStop.lng,
+                    firstStop.len!!
+                )
 
-                val firstStopSaved = stopStorage.createOrGet(firstStop.id!!, firstStop.name!!, firstStop.len!!)
-                val lastStopSaved = stopStorage.createOrGet(lastStop.id!!, lastStop.name!!, lastStop.len!!)
+                val lastStopSaved = stopStorage.createOrGet(
+                    lastStop.id!!,
+                    lastStop.name!!,
+                    lastStop.lat,
+                    lastStop.lng,
+                    lastStop.len!!
+                )
 
                 val savedRoute =
-                    routeStorage.create(route.route, route.name, routeType.type, firstStopSaved.id, lastStopSaved.id)
+                    routeStorage.create(
+                        route.route,
+                        route.name,
+                        routeType.type,
+                        firstStopSaved.id,
+                        lastStopSaved.id
+                    )
 
                 traces.forEach { trace ->
                     if (trace.name == null) {
-                        traceStorage.create(trace.lat, trace.lng, null, savedRoute.id)
+                        traceStorage.createOrGet(trace.lat, trace.lng, null, savedRoute.id.value)
                     } else {
-                        stopStorage.createOrGet(trace.id!!, trace.name, trace.len!!).let {
-                            traceStorage.create(trace.lat, trace.lng, it.id, savedRoute.id)
+                        stopStorage.createOrGet(trace.id!!, trace.name, trace.lat, trace.lng, trace.len!!).let {
+                            traceStorage.createOrGet(trace.lat, trace.lng, it.id, savedRoute.id.value)
                         }
                     }
                 }

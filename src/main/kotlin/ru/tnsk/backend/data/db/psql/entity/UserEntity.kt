@@ -11,4 +11,5 @@ class UserEntity(id: EntityID<Int>) : IntEntity(id) {
     var passwordHash by UsersTable.passwordHash
     var login by UsersTable.login
     var name by UsersTable.name
+    var role by UsersTable.role
 }

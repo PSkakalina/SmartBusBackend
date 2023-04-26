@@ -5,10 +5,7 @@ import com.zaxxer.hikari.HikariDataSource
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.transactions.transaction
-import ru.tnsk.backend.data.db.psql.table.RoutesTable
-import ru.tnsk.backend.data.db.psql.table.StopsTable
-import ru.tnsk.backend.data.db.psql.table.TracesTable
-import ru.tnsk.backend.data.db.psql.table.UsersTable
+import ru.tnsk.backend.data.db.psql.table.*
 
 @JvmInline
 value class TnskDatabase(val db: Database) {
@@ -39,7 +36,8 @@ value class TnskDatabase(val db: Database) {
                 UsersTable,
                 StopsTable,
                 RoutesTable,
-                TracesTable
+                TracesTable,
+                RouteTraceTable
             )
         }
     }

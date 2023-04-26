@@ -23,7 +23,7 @@ fun Application.configureSecurity() {
             realm = "tech.blur"
             validate {
                 val id = it.payload.getClaim(ID).asInt()
-                val name = it.payload.getClaim(name).asString()
+                val name = it.payload.getClaim(NAME).asString()
                 val login = it.payload.getClaim(LOGIN).asString()
                 if (checkNotNulls(id, login, name)) User(id, login, name)
                 else null

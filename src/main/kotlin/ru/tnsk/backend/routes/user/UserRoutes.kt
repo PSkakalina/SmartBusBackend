@@ -20,7 +20,7 @@ fun Routing.accountRoutes(
     authUserUseCase: AuthUserUseCase = get(),
     getUserUseCase: GetUserUseCase = get()
 ) {
-    val route = "user"
+    val route = "account"
 
     post<CreateUserRequest>("$route/register") {
         with(it) {
@@ -55,18 +55,20 @@ fun Routing.accountRoutes(
         } ?: call.respond(HttpStatusCode.NotFound)
     }
 
-    get("$route/{login}") {
-        val login = call.parameters["login"]!!
-        val id = login.toIntOrNull()
-
-        val user = if (id == null) {
-            getUserUseCase.execute(GetUserUseCase.Input.Login(login))
-        } else getUserUseCase.execute(GetUserUseCase.Input.Id(id))
-
-        user?.let {
-            call.respond(
-                it
-            )
-        } ?: call.respond(HttpStatusCode.NotFound)
-    }
+//    get("$route/{login}") {
+//        return@get call.respond(HttpStatusCode.NotFound)
+//
+////        val login = call.parameters["login"]!!
+////        val id = login.toIntOrNull()
+////
+////        val user = if (id == null) {
+////            getUserUseCase.execute(GetUserUseCase.Input.Login(login))
+////        } else getUserUseCase.execute(GetUserUseCase.Input.Id(id))
+////
+////        user?.let {
+////            call.respond(
+////                it
+////            )
+////        } ?: call.respond(HttpStatusCode.NotFound)
+//    }
 }

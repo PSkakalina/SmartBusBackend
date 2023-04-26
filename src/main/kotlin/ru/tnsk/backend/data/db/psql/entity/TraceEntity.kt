@@ -13,7 +13,4 @@ class TraceEntity(id: EntityID<Int>) : IntEntity(id) {
 
     val stop by StopEntity optionalReferencedOn TracesTable.stop
     var stopId by TracesTable.stop
-
-    val route by RouteEntity referencedOn TracesTable.route
-    var routeId by TracesTable.route
 }

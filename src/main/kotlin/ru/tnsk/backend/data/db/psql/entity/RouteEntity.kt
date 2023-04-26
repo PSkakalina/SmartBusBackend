@@ -3,8 +3,8 @@ package ru.tnsk.backend.data.db.psql.entity
 import org.jetbrains.exposed.dao.IntEntity
 import org.jetbrains.exposed.dao.IntEntityClass
 import org.jetbrains.exposed.dao.id.EntityID
+import ru.tnsk.backend.data.db.psql.table.RouteTraceTable
 import ru.tnsk.backend.data.db.psql.table.RoutesTable
-import ru.tnsk.backend.data.db.psql.table.TracesTable
 
 class RouteEntity(id: EntityID<Int>) : IntEntity(id) {
     companion object : IntEntityClass<RouteEntity>(RoutesTable)
@@ -18,5 +18,5 @@ class RouteEntity(id: EntityID<Int>) : IntEntity(id) {
     val lastStop by StopEntity referencedOn RoutesTable.lastStop
     var lastStopId by RoutesTable.lastStop
 
-    val traces by TraceEntity referrersOn TracesTable.route
+    val traces by TraceEntity via RouteTraceTable
 }

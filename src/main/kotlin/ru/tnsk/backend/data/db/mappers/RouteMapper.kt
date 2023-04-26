@@ -1,7 +1,6 @@
-package ru.tnsk.backend.data.db.psql.storage.route
+package ru.tnsk.backend.data.db.mappers
 
 import ru.tnsk.backend.data.db.psql.entity.RouteEntity
-import ru.tnsk.backend.data.db.psql.storage.stop.asStop
 import ru.tnsk.backend.domain.model.transport.Route
 
 fun RouteEntity.asRoute() = Route(
