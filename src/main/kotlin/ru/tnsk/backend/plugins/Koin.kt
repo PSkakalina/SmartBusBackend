@@ -12,7 +12,8 @@ fun Application.configureKoin() {
             storageModule,
             useCaseModule,
             repositoryModule,
-            commonModule
+            commonModule,
+            serviceModule
         )
     }
 }

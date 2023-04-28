@@ -13,4 +13,13 @@ fun Application.module() {
     configureSerialization()
     configureDatabases()
     configureRouting()
+    configureWebSockets()
+    configureServices()
+
+//    GlobalScope.launch {
+//        val repo = get<TransportMarkerRepository>()
+//
+//        val m = repo.getAllMarkers()
+//        println(m)
+//    }
 }

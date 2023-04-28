@@ -14,10 +14,10 @@ plugins {
     id("org.jetbrains.kotlin.plugin.serialization") version "1.8.10"
 }
 
-group = "ru.bibliophile"
+group = "ru.tnsk"
 version = "0.0.1"
 application {
-    mainClass.set("ru.bibliophile.ApplicationKt")
+    mainClass.set("ru.tnsk.backend.ApplicationKt")
 
     val isDevelopment: Boolean = project.ext.has("development")
     applicationDefaultJvmArgs = listOf("-Dio.ktor.development=$isDevelopment")
@@ -35,6 +35,7 @@ dependencies {
     implementation("io.ktor:ktor-server-resources:$ktor_version")
     implementation("io.ktor:ktor-server-netty-jvm:$ktor_version")
     implementation("io.ktor:ktor-server-openapi:$ktor_version")
+    implementation("io.ktor:ktor-server-websockets:$ktor_version")
 
     implementation("io.ktor:ktor-client-content-negotiation:$ktor_version")
     implementation("io.ktor:ktor-client-core:$ktor_version")
@@ -42,6 +43,7 @@ dependencies {
     implementation("io.ktor:ktor-client-logging:$ktor_version")
 
     implementation("io.ktor:ktor-serialization-kotlinx-json-jvm:$ktor_version")
+    implementation("io.ktor:ktor-serialization-kotlinx-protobuf:$ktor_version")
 
     implementation("org.litote.kmongo:kmongo:$kmongo_version")
     implementation("org.litote.kmongo:kmongo-async:$kmongo_version")

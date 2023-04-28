@@ -11,6 +11,12 @@ class NskgtStorage(private val api: NskgtApi) {
         return api.getMarkers(createQuery(transportType, route))
     }
 
+    suspend fun getMarkers(routes: List<RouteQuery>): MarkersResponse {
+        return api.getMarkers(routes.joinToString(separator = SEPARATOR) {
+            createQuery(it.transportType, it.route)
+        })
+    }
+
     suspend fun getAllRoutes(): List<RouteTypeDto> = api.getAllRoutes()
 
     suspend fun getTraces(transportType: TransportType, route: String): TracesResponse {
@@ -18,4 +24,13 @@ class NskgtStorage(private val api: NskgtApi) {
     }
 
     private fun createQuery(transportType: TransportType, route: String) = "${transportType.value + 1}-$route-W"
+
+    data class RouteQuery(
+        val transportType: TransportType,
+        val route: String
+    )
+
+    private companion object {
+        const val SEPARATOR = "%257C"
+    }
 }
