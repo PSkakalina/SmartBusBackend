@@ -7,9 +7,10 @@ import io.ktor.server.routing.*
 import org.koin.ktor.ext.get
 import org.mindrot.jbcrypt.BCrypt
 import ru.tnsk.backend.domain.model.account.Token
+import ru.tnsk.backend.domain.model.account.UserRole
 import ru.tnsk.backend.domain.usecase.user.AuthUserUseCase
 import ru.tnsk.backend.domain.usecase.user.CreateUserUseCase
-import ru.tnsk.backend.domain.usecase.user.GetUserUseCase
+import ru.tnsk.backend.domain.usecase.user.GetFullUserUseCase
 import ru.tnsk.backend.plugins.JwtConfig
 import ru.tnsk.backend.routes.user.model.AuthResponse
 import ru.tnsk.backend.routes.user.model.CreateUserRequest
@@ -18,7 +19,7 @@ import ru.tnsk.backend.routes.user.model.LoginRequest
 fun Routing.accountRoutes(
     createUserUseCase: CreateUserUseCase = get(),
     authUserUseCase: AuthUserUseCase = get(),
-    getUserUseCase: GetUserUseCase = get()
+    getFullUserUseCase: GetFullUserUseCase = get()
 ) {
     val route = "account"
 
@@ -44,6 +45,30 @@ fun Routing.accountRoutes(
         }
     }
 
+    // todo дополнительные проверки что бы не каждый мог зарегаться как водила
+    post<CreateUserRequest>("$route/register/driver") {
+        with(it) {
+            createUserUseCase.execute(
+                CreateUserUseCase.Input(
+                    login,
+                    name,
+                    BCrypt.hashpw(password, BCrypt.gensalt()),
+                    UserRole.DRIVER
+                )
+            )
+        }.let { user ->
+            call.respond(
+                AuthResponse(
+                    user,
+                    Token(
+                        JwtConfig.generateToken(user),
+                        "Bearer"
+                    )
+                )
+            )
+        }
+    }
+
     post<LoginRequest>("$route/login") {
         authUserUseCase.execute(it)?.let { (user, token) ->
             call.respond(
@@ -53,6 +78,24 @@ fun Routing.accountRoutes(
                 )
             )
         } ?: call.respond(HttpStatusCode.NotFound)
+    }
+
+    post<LoginRequest>("$route/login/driver") {
+        val userRole = getFullUserUseCase.execute(
+            GetFullUserUseCase.Input.Login(it.login)
+        )?.role ?: call.respond(HttpStatusCode.NotFound)
+
+        if (userRole == UserRole.DRIVER || userRole == UserRole.ADMIN)
+            authUserUseCase.execute(it)?.let { (user, token) ->
+                call.respond(
+                    AuthResponse(
+                        user,
+                        token
+                    )
+                )
+            } ?: call.respond(HttpStatusCode.NotFound)
+
+        call.respond(HttpStatusCode.Unauthorized)
     }
 
 //    get("$route/{login}") {

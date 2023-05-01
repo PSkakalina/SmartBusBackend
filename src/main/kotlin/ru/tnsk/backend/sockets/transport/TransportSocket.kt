@@ -13,6 +13,9 @@ import kotlin.time.Duration.Companion.minutes
 
 fun Routing.transportSocket(transportMarkerRepository: TransportMarkerRepository = get()) {
     webSocket("/markers") { // todo коректировка по времени, синхронизация с обновлением БД
+        val types = call.request.queryParameters["type"]
+        val routes = call.request.queryParameters["route"]
+
         while (true) {
             val markers = transportMarkerRepository.getAllMarkers(false)
             sendSerialized(MarkersResponse(markers))
@@ -22,6 +25,9 @@ fun Routing.transportSocket(transportMarkerRepository: TransportMarkerRepository
     }
 
     webSocket("/markers/json") {
+        val types = call.request.queryParameters["type"]
+        val routes = call.request.queryParameters["route"]
+
         while (true) {
             val markers = transportMarkerRepository.getAllMarkers(false)
             sendSerializedBase(

@@ -8,7 +8,8 @@ interface UserRepository {
     fun createUser(
         login: String,
         name: String,
-        passwordHash: String
+        passwordHash: String,
+        userRole: UserRole = UserRole.DEFAULT
     ): User
 
     fun getUser(login: String): User?
@@ -18,6 +19,8 @@ interface UserRepository {
 
 
     fun getFullUser(login: String): FullUser?
+
+    fun getFullUser(id: Int): FullUser?
 
     fun getUserRole(id: Int): UserRole?
 }

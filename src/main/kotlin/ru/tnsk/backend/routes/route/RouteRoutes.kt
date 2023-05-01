@@ -51,7 +51,7 @@ fun Routing.routeRoutes(
             return@get
         }
 
-        routeRepository.findRoute(id)?.let {
+        routeRepository.findFullRoute(id)?.let {
             call.respond(it)
         } ?: call.respond(HttpStatusCode.NotFound)
     }

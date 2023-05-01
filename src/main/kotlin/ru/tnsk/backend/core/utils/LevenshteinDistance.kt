@@ -48,8 +48,8 @@ object LevenshteinDistance {
 fun main() {
     val brarcetRegex = """\(.*\)""".toRegex(RegexOption.IGNORE_CASE)
 
-    val s1 = "Отделениесвязи№13(Северноекладбище-лето)".replace(brarcetRegex, "")
-    val s2 = "Отделениесвязи№13(Пашино)".replace(brarcetRegex, "")
+    val s1 = "Отделениесвязи№13(Северноекладбище-лето)"//.replace(brarcetRegex, "")
+    val s2 = "Отделениесвязи№13(Пашино)"//.replace(brarcetRegex, "")
 
     LevenshteinDistance(s1, s2)
 //    val similarity = LevenshteinDistance.findSimilarity("Отделениесвязи№13(Северноекладбище-лето)", "Отделениесвязи№13(Пашино)", true)

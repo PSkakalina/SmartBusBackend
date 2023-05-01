@@ -4,6 +4,7 @@ import org.jetbrains.exposed.dao.id.EntityID
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.and
 import org.jetbrains.exposed.sql.transactions.transaction
+import ru.tnsk.backend.data.db.mappers.asFullRoute
 import ru.tnsk.backend.data.db.mappers.asRoute
 import ru.tnsk.backend.data.db.psql.entity.RouteEntity
 import ru.tnsk.backend.data.db.psql.table.RoutesTable
@@ -31,6 +32,9 @@ class RouteStorage(
     }
 
     fun findRoute(id: Int) = transaction(db) { RouteEntity.findById(id)?.asRoute() }
+
+    fun findFullRoute(id: Int, withStops: Boolean) =
+        transaction(db) { RouteEntity.findById(id)?.asFullRoute(withStops) }
 
     fun findRoute(transportType: TransportType, route: String) = transaction(db) {
         RouteEntity.find {

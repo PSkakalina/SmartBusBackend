@@ -1,7 +1,9 @@
 package ru.tnsk.backend
 
+import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.netty.*
+import io.ktor.server.plugins.cors.routing.*
 import ru.tnsk.backend.plugins.*
 
 fun main(args: Array<String>): Unit = EngineMain.main(args)
@@ -15,6 +17,11 @@ fun Application.module() {
     configureRouting()
     configureWebSockets()
     configureServices()
+
+    install(CORS) {
+        anyHost()
+        allowHeader(HttpHeaders.ContentType)
+    }
 
 //    GlobalScope.launch {
 //        val repo = get<TransportMarkerRepository>()

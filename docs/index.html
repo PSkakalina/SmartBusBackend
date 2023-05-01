@@ -10807,6 +10807,20 @@
             }
         }
     };
+    defs["FullRoute"] = {
+        "type": "object",
+        "properties": {
+            "route": {
+                "$ref": "#/components/schemas/Route"
+            },
+            "traces": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/Trace"
+                }
+            }
+        }
+    };
     defs["LatLng"] = {
         "type": "object",
         "properties": {
@@ -10855,12 +10869,12 @@
             "name": {
                 "type": "string"
             },
+            "latLng": {
+                "$ref": "#/components/schemas/LatLng"
+            },
             "len": {
                 "type": "integer",
                 "format": "int32"
-            },
-            "trace": {
-                "$ref": "#/components/schemas/Trace"
             }
         }
     };
@@ -10886,8 +10900,7 @@
                 "$ref": "#/components/schemas/LatLng"
             },
             "stop": {
-                "type": "integer",
-                "format": "int32"
+                "$ref": "#/components/schemas/Stop"
             }
         }
     };
@@ -10923,20 +10936,23 @@
                     <li class="nav-fixed nav-header active" data-group="_"><a href="#api-_">API Summary</a></li>
 
                     <li class="nav-header" data-group="Default"><a href="#api-Default">API Methods - Default</a></li>
+                    <li data-group="Default" data-name="importGet" class="">
+                        <a href="#api-Default-importGet">importGet</a>
+                    </li>
+                    <li data-group="Default" data-name="markersGet" class="">
+                        <a href="#api-Default-markersGet">markersGet</a>
+                    </li>
+                    <li data-group="Default" data-name="markersJsonGet" class="">
+                        <a href="#api-Default-markersJsonGet">markersJsonGet</a>
+                    </li>
                     <li data-group="Default" data-name="rootGet" class="">
                         <a href="#api-Default-rootGet">rootGet</a>
-                    </li>
-                    <li data-group="Default" data-name="rootPost" class="">
-                        <a href="#api-Default-rootPost">rootPost</a>
                     </li>
                     <li data-group="Default" data-name="routesGet" class="">
                         <a href="#api-Default-routesGet">routesGet</a>
                     </li>
                     <li data-group="Default" data-name="routesIdGet" class="">
                         <a href="#api-Default-routesIdGet">routesIdGet</a>
-                    </li>
-                    <li data-group="Default" data-name="userLoginGet" class="">
-                        <a href="#api-Default-userLoginGet">userLoginGet</a>
                     </li>
                 </ul>
             </nav>
@@ -10959,6 +10975,1110 @@
             <div id="sections">
                 <section id="api-Default">
                     <h1>Default</h1>
+                    <div id="api-Default-importGet">
+                        <article id="api-Default-importGet-0" data-group="User" data-name="importGet" data-version="0">
+                            <div class="pull-left">
+                                <h1>importGet</h1>
+                                <p></p>
+                            </div>
+                            <div class="pull-right"></div>
+                            <div class="clearfix"></div>
+                            <p></p>
+                            <p class="marked"></p>
+                            <p></p>
+                            <br/>
+                            <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span
+                                    class="pln">/import</span></code></pre>
+                            <p>
+                            <h3>Usage and SDK Samples</h3>
+                            </p>
+                            <ul class="nav nav-tabs nav-tabs-examples">
+                                <li class="active"><a href="#examples-Default-importGet-0-curl">Curl</a></li>
+                                <li class=""><a href="#examples-Default-importGet-0-java">Java</a></li>
+                                <li class=""><a href="#examples-Default-importGet-0-android">Android</a></li>
+                                <!--<li class=""><a href="#examples-Default-importGet-0-groovy">Groovy</a></li>-->
+                                <li class=""><a href="#examples-Default-importGet-0-objc">Obj-C</a></li>
+                                <li class=""><a href="#examples-Default-importGet-0-javascript">JavaScript</a></li>
+                                <!--<li class=""><a href="#examples-Default-importGet-0-angular">Angular</a></li>-->
+                                <li class=""><a href="#examples-Default-importGet-0-csharp">C#</a></li>
+                                <li class=""><a href="#examples-Default-importGet-0-php">PHP</a></li>
+                                <li class=""><a href="#examples-Default-importGet-0-perl">Perl</a></li>
+                                <li class=""><a href="#examples-Default-importGet-0-python">Python</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="examples-Default-importGet-0-curl">
+                           <pre class="prettyprint"><code class="language-bsh">curl -X GET\
+-H "Accept: */*"\
+"https://backend/import"</code></pre>
+                                </div>
+                                <div class="tab-pane" id="examples-Default-importGet-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.DefaultApi;
+
+import java.io.File;
+import java.util.*;
+
+public class DefaultApiExample {
+
+    public static void main(String[] args) {
+
+        DefaultApi apiInstance = new DefaultApi();
+        try {
+            Object result = apiInstance.importGet();
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DefaultApi#importGet");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                                </div>
+
+                                <div class="tab-pane" id="examples-Default-importGet-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.DefaultApi;
+
+public class DefaultApiExample {
+
+    public static void main(String[] args) {
+        DefaultApi apiInstance = new DefaultApi();
+        try {
+            Object result = apiInstance.importGet();
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DefaultApi#importGet");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                                </div>
+                                <!--
+  <div class="tab-pane" id="examples-Default-importGet-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                                <div class="tab-pane" id="examples-Default-importGet-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">
+DefaultApi *apiInstance = [[DefaultApi alloc] init];
+
+[apiInstance importGetWithCompletionHandler:
+              ^(Object output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                                </div>
+
+                                <div class="tab-pane" id="examples-Default-importGet-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var BackendApi = require('backend_api');
+
+var api = new BackendApi.DefaultApi()
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.importGet(callback);
+</code></pre>
+                                </div>
+
+                                <!--<div class="tab-pane" id="examples-Default-importGet-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                                <div class="tab-pane" id="examples-Default-importGet-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class importGetExample
+    {
+        public void main()
+        {
+
+            var apiInstance = new DefaultApi();
+
+            try
+            {
+                Object result = apiInstance.importGet();
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.importGet: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                                </div>
+
+                                <div class="tab-pane" id="examples-Default-importGet-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$api_instance = new Swagger\Client\ApiDefaultApi();
+
+try {
+    $result = $api_instance->importGet();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->importGet: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                                </div>
+
+                                <div class="tab-pane" id="examples-Default-importGet-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::DefaultApi;
+
+my $api_instance = WWW::SwaggerClient::DefaultApi->new();
+
+eval {
+    my $result = $api_instance->importGet();
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling DefaultApi->importGet: $@\n";
+}</code></pre>
+                                </div>
+
+                                <div class="tab-pane" id="examples-Default-importGet-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+
+try:
+    api_response = api_instance.import_get()
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->importGet: %s\n" % e)</code></pre>
+                                </div>
+                            </div>
+
+                            <h2>Parameters</h2>
+
+
+                            <h2>Responses</h2>
+                            <h3> Status: 204 - No Content </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples">
+                                <li class="active">
+                                    <a data-toggle="tab" href="#responses-importGet-204-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-importGet-204-schema">
+                                    <div id='responses-importGet-204-schema-204'
+                                         style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                        <script>
+                                            $(document).ready(function () {
+                                                var schemaWrapper = {
+                                                    "description": "No Content",
+                                                    "content": {
+                                                        "*/*": {
+                                                            "schema": {
+                                                                "type": "object",
+                                                                "x-content-type": "*/*"
+                                                            }
+                                                        }
+                                                    }
+                                                };
+                                                var schema = schemaWrapper.content["*/*"].schema;
+                                                if (schema.$ref != null) {
+                                                    schema = defsParser.$refs.get(schema.$ref);
+                                                } else {
+                                                    schemaWrapper.components = {};
+                                                    schemaWrapper.components.schemas = Object.assign({}, defs);
+                                                    $RefParser.dereference(schemaWrapper).catch(function (err) {
+                                                        console.log(err);
+                                                    });
+                                                }
+
+                                                //console.log(JSON.stringify(schema));
+                                                var view = new JSONSchemaView(schema, 3);
+                                                $('#responses-importGet-204-schema-data').val(stringify(schema));
+                                                var result = $('#responses-importGet-204-schema-204');
+                                                result.empty();
+                                                result.append(view.render());
+                                            });
+                                        </script>
+                                    </div>
+                                    <input id='responses-importGet-204-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                            <h3> Status: 401 - Unauthorized </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples">
+                                <li class="active">
+                                    <a data-toggle="tab" href="#responses-importGet-401-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-importGet-401-schema">
+                                    <div id='responses-importGet-401-schema-401'
+                                         style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                        <script>
+                                            $(document).ready(function () {
+                                                var schemaWrapper = {
+                                                    "description": "Unauthorized",
+                                                    "content": {
+                                                        "*/*": {
+                                                            "schema": {
+                                                                "type": "object",
+                                                                "x-content-type": "*/*"
+                                                            }
+                                                        }
+                                                    }
+                                                };
+                                                var schema = schemaWrapper.content["*/*"].schema;
+                                                if (schema.$ref != null) {
+                                                    schema = defsParser.$refs.get(schema.$ref);
+                                                } else {
+                                                    schemaWrapper.components = {};
+                                                    schemaWrapper.components.schemas = Object.assign({}, defs);
+                                                    $RefParser.dereference(schemaWrapper).catch(function (err) {
+                                                        console.log(err);
+                                                    });
+                                                }
+
+                                                //console.log(JSON.stringify(schema));
+                                                var view = new JSONSchemaView(schema, 3);
+                                                $('#responses-importGet-401-schema-data').val(stringify(schema));
+                                                var result = $('#responses-importGet-401-schema-401');
+                                                result.empty();
+                                                result.append(view.render());
+                                            });
+                                        </script>
+                                    </div>
+                                    <input id='responses-importGet-401-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                        </article>
+                    </div>
+                    <hr>
+                    <div id="api-Default-markersGet">
+                        <article id="api-Default-markersGet-0" data-group="User" data-name="markersGet"
+                                 data-version="0">
+                            <div class="pull-left">
+                                <h1>markersGet</h1>
+                                <p></p>
+                            </div>
+                            <div class="pull-right"></div>
+                            <div class="clearfix"></div>
+                            <p></p>
+                            <p class="marked"></p>
+                            <p></p>
+                            <br/>
+                            <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span
+                                    class="pln">/markers</span></code></pre>
+                            <p>
+                            <h3>Usage and SDK Samples</h3>
+                            </p>
+                            <ul class="nav nav-tabs nav-tabs-examples">
+                                <li class="active"><a href="#examples-Default-markersGet-0-curl">Curl</a></li>
+                                <li class=""><a href="#examples-Default-markersGet-0-java">Java</a></li>
+                                <li class=""><a href="#examples-Default-markersGet-0-android">Android</a></li>
+                                <!--<li class=""><a href="#examples-Default-markersGet-0-groovy">Groovy</a></li>-->
+                                <li class=""><a href="#examples-Default-markersGet-0-objc">Obj-C</a></li>
+                                <li class=""><a href="#examples-Default-markersGet-0-javascript">JavaScript</a></li>
+                                <!--<li class=""><a href="#examples-Default-markersGet-0-angular">Angular</a></li>-->
+                                <li class=""><a href="#examples-Default-markersGet-0-csharp">C#</a></li>
+                                <li class=""><a href="#examples-Default-markersGet-0-php">PHP</a></li>
+                                <li class=""><a href="#examples-Default-markersGet-0-perl">Perl</a></li>
+                                <li class=""><a href="#examples-Default-markersGet-0-python">Python</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="examples-Default-markersGet-0-curl">
+                           <pre class="prettyprint"><code class="language-bsh">curl -X GET\
+"https://backend/markers?type=&route="</code></pre>
+                                </div>
+                                <div class="tab-pane" id="examples-Default-markersGet-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.DefaultApi;
+
+import java.io.File;
+import java.util.*;
+
+public class DefaultApiExample {
+
+    public static void main(String[] args) {
+
+        DefaultApi apiInstance = new DefaultApi();
+        String connection = connection_example; // String | Websocket Connection parameter
+        String upgrade = upgrade_example; // String | Websocket Upgrade parameter
+        String secWebSocketKey = secWebSocketKey_example; // String | Websocket Sec-WebSocket-Key parameter
+        String type = type_example; // String |
+        String route = route_example; // String |
+        try {
+            apiInstance.markersGet(connection, upgrade, secWebSocketKey, type, route);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DefaultApi#markersGet");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                                </div>
+
+                                <div class="tab-pane" id="examples-Default-markersGet-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.DefaultApi;
+
+public class DefaultApiExample {
+
+    public static void main(String[] args) {
+        DefaultApi apiInstance = new DefaultApi();
+        String connection = connection_example; // String | Websocket Connection parameter
+        String upgrade = upgrade_example; // String | Websocket Upgrade parameter
+        String secWebSocketKey = secWebSocketKey_example; // String | Websocket Sec-WebSocket-Key parameter
+        String type = type_example; // String |
+        String route = route_example; // String |
+        try {
+            apiInstance.markersGet(connection, upgrade, secWebSocketKey, type, route);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DefaultApi#markersGet");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                                </div>
+                                <!--
+  <div class="tab-pane" id="examples-Default-markersGet-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                                <div class="tab-pane" id="examples-Default-markersGet-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">String *connection = connection_example; // Websocket Connection parameter
+String *upgrade = upgrade_example; // Websocket Upgrade parameter
+String *secWebSocketKey = secWebSocketKey_example; // Websocket Sec-WebSocket-Key parameter
+String *type = type_example; //  (optional)
+String *route = route_example; //  (optional)
+
+DefaultApi *apiInstance = [[DefaultApi alloc] init];
+
+[apiInstance markersGetWith:connection
+    upgrade:upgrade
+    secWebSocketKey:secWebSocketKey
+    type:type
+    route:route
+              completionHandler: ^(NSError* error) {
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                                </div>
+
+                                <div class="tab-pane" id="examples-Default-markersGet-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var BackendApi = require('backend_api');
+
+var api = new BackendApi.DefaultApi()
+var connection = connection_example; // {{String}} Websocket Connection parameter
+var upgrade = upgrade_example; // {{String}} Websocket Upgrade parameter
+var secWebSocketKey = secWebSocketKey_example; // {{String}} Websocket Sec-WebSocket-Key parameter
+var opts = {
+  'type': type_example, // {{String}}
+  'route': route_example // {{String}}
+};
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+api.markersGet(connection, upgrade, secWebSocketKey, opts, callback);
+</code></pre>
+                                </div>
+
+                                <!--<div class="tab-pane" id="examples-Default-markersGet-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                                <div class="tab-pane" id="examples-Default-markersGet-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class markersGetExample
+    {
+        public void main()
+        {
+
+            var apiInstance = new DefaultApi();
+            var connection = connection_example;  // String | Websocket Connection parameter
+            var upgrade = upgrade_example;  // String | Websocket Upgrade parameter
+            var secWebSocketKey = secWebSocketKey_example;  // String | Websocket Sec-WebSocket-Key parameter
+            var type = type_example;  // String |  (optional)
+            var route = route_example;  // String |  (optional)
+
+            try
+            {
+                apiInstance.markersGet(connection, upgrade, secWebSocketKey, type, route);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.markersGet: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                                </div>
+
+                                <div class="tab-pane" id="examples-Default-markersGet-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$api_instance = new Swagger\Client\ApiDefaultApi();
+$connection = connection_example; // String | Websocket Connection parameter
+$upgrade = upgrade_example; // String | Websocket Upgrade parameter
+$secWebSocketKey = secWebSocketKey_example; // String | Websocket Sec-WebSocket-Key parameter
+$type = type_example; // String |
+$route = route_example; // String |
+
+try {
+    $api_instance->markersGet($connection, $upgrade, $secWebSocketKey, $type, $route);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->markersGet: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                                </div>
+
+                                <div class="tab-pane" id="examples-Default-markersGet-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::DefaultApi;
+
+my $api_instance = WWW::SwaggerClient::DefaultApi->new();
+my $connection = connection_example; # String | Websocket Connection parameter
+my $upgrade = upgrade_example; # String | Websocket Upgrade parameter
+my $secWebSocketKey = secWebSocketKey_example; # String | Websocket Sec-WebSocket-Key parameter
+my $type = type_example; # String |
+my $route = route_example; # String |
+
+eval {
+    $api_instance->markersGet(connection => $connection, upgrade => $upgrade, secWebSocketKey => $secWebSocketKey, type => $type, route => $route);
+};
+if ($@) {
+    warn "Exception when calling DefaultApi->markersGet: $@\n";
+}</code></pre>
+                                </div>
+
+                                <div class="tab-pane" id="examples-Default-markersGet-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+connection = connection_example # String | Websocket Connection parameter
+upgrade = upgrade_example # String | Websocket Upgrade parameter
+secWebSocketKey = secWebSocketKey_example # String | Websocket Sec-WebSocket-Key parameter
+type = type_example # String |  (optional)
+route = route_example # String |  (optional)
+
+try:
+    api_instance.markers_get(connection, upgrade, secWebSocketKey, type=type, route=route)
+except ApiException as e:
+    print("Exception when calling DefaultApi->markersGet: %s\n" % e)</code></pre>
+                                </div>
+                            </div>
+
+                            <h2>Parameters</h2>
+
+
+                            <div class="methodsubtabletitle">Header parameters</div>
+                            <table id="methodsubtable">
+                                <tr>
+                                    <th width="150px">Name</th>
+                                    <th>Description</th>
+                                </tr>
+                                <tr>
+                                    <td style="width:150px;">Connection*</td>
+                                    <td>
+
+
+                                        <div id="d2e199_markersGet_connection">
+                                            <div class="json-schema-view">
+                                                <div class="primitive">
+                                                  <span class="type">
+                                                      String
+                                                  </span>
+
+                                                    <div class="inner description">
+                                                        Websocket Connection parameter
+                                                    </div>
+                                                </div>
+                                                <div class="inner required">
+                                                    Required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width:150px;">Upgrade*</td>
+                                    <td>
+
+
+                                        <div id="d2e199_markersGet_upgrade">
+                                            <div class="json-schema-view">
+                                                <div class="primitive">
+                                                  <span class="type">
+                                                      String
+                                                  </span>
+
+                                                    <div class="inner description">
+                                                        Websocket Upgrade parameter
+                                                    </div>
+                                                </div>
+                                                <div class="inner required">
+                                                    Required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width:150px;">Sec-WebSocket-Key*</td>
+                                    <td>
+
+
+                                        <div id="d2e199_markersGet_secWebSocketKey">
+                                            <div class="json-schema-view">
+                                                <div class="primitive">
+                                                  <span class="type">
+                                                      String
+                                                  </span>
+
+                                                    <div class="inner description">
+                                                        Websocket Sec-WebSocket-Key parameter
+                                                    </div>
+                                                </div>
+                                                <div class="inner required">
+                                                    Required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+
+
+                            <div class="methodsubtabletitle">Query parameters</div>
+                            <table id="methodsubtable">
+                                <tr>
+                                    <th width="150px">Name</th>
+                                    <th>Description</th>
+                                </tr>
+                                <tr>
+                                    <td style="width:150px;">type</td>
+                                    <td>
+
+
+                                        <div id="d2e199_markersGet_type">
+                                            <div class="json-schema-view">
+                                                <div class="primitive">
+                                                <span class="type">
+                                                    String
+                                                </span>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width:150px;">route</td>
+                                    <td>
+
+
+                                        <div id="d2e199_markersGet_route">
+                                            <div class="json-schema-view">
+                                                <div class="primitive">
+                                                <span class="type">
+                                                    String
+                                                </span>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <h2>Responses</h2>
+                            <h3> Status: 101 - Switching Protocols </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples">
+                                <li class="">
+                                    <a data-toggle="tab" href="#responses-markersGet-101-headers">Headers</a>
+                                </li>
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane" id="responses-markersGet-101-headers">
+                                    <table>
+                                        <tr>
+                                            <th width="150px">Name</th>
+                                            <th width="100px">Type</th>
+                                            <th width="100px">Format</th>
+                                            <th>Description</th>
+                                        </tr>
+                                        <tr>
+                                            <td>Connection</td>
+                                            <td>String</td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Upgrade</td>
+                                            <td>String</td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Sec-WebSocket-Accept</td>
+                                            <td>String</td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </article>
+                    </div>
+                    <hr>
+                    <div id="api-Default-markersJsonGet">
+                        <article id="api-Default-markersJsonGet-0" data-group="User" data-name="markersJsonGet"
+                                 data-version="0">
+                            <div class="pull-left">
+                                <h1>markersJsonGet</h1>
+                                <p></p>
+                            </div>
+                            <div class="pull-right"></div>
+                            <div class="clearfix"></div>
+                            <p></p>
+                            <p class="marked"></p>
+                            <p></p>
+                            <br/>
+                            <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span
+                                    class="pln">/markers/json</span></code></pre>
+                            <p>
+                            <h3>Usage and SDK Samples</h3>
+                            </p>
+                            <ul class="nav nav-tabs nav-tabs-examples">
+                                <li class="active"><a href="#examples-Default-markersJsonGet-0-curl">Curl</a></li>
+                                <li class=""><a href="#examples-Default-markersJsonGet-0-java">Java</a></li>
+                                <li class=""><a href="#examples-Default-markersJsonGet-0-android">Android</a></li>
+                                <!--<li class=""><a href="#examples-Default-markersJsonGet-0-groovy">Groovy</a></li>-->
+                                <li class=""><a href="#examples-Default-markersJsonGet-0-objc">Obj-C</a></li>
+                                <li class=""><a href="#examples-Default-markersJsonGet-0-javascript">JavaScript</a></li>
+                                <!--<li class=""><a href="#examples-Default-markersJsonGet-0-angular">Angular</a></li>-->
+                                <li class=""><a href="#examples-Default-markersJsonGet-0-csharp">C#</a></li>
+                                <li class=""><a href="#examples-Default-markersJsonGet-0-php">PHP</a></li>
+                                <li class=""><a href="#examples-Default-markersJsonGet-0-perl">Perl</a></li>
+                                <li class=""><a href="#examples-Default-markersJsonGet-0-python">Python</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="examples-Default-markersJsonGet-0-curl">
+                           <pre class="prettyprint"><code class="language-bsh">curl -X GET\
+"https://backend/markers/json?type=&route="</code></pre>
+                                </div>
+                                <div class="tab-pane" id="examples-Default-markersJsonGet-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.DefaultApi;
+
+import java.io.File;
+import java.util.*;
+
+public class DefaultApiExample {
+
+    public static void main(String[] args) {
+
+        DefaultApi apiInstance = new DefaultApi();
+        String connection = connection_example; // String | Websocket Connection parameter
+        String upgrade = upgrade_example; // String | Websocket Upgrade parameter
+        String secWebSocketKey = secWebSocketKey_example; // String | Websocket Sec-WebSocket-Key parameter
+        String type = type_example; // String |
+        String route = route_example; // String |
+        try {
+            apiInstance.markersJsonGet(connection, upgrade, secWebSocketKey, type, route);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DefaultApi#markersJsonGet");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                                </div>
+
+                                <div class="tab-pane" id="examples-Default-markersJsonGet-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.DefaultApi;
+
+public class DefaultApiExample {
+
+    public static void main(String[] args) {
+        DefaultApi apiInstance = new DefaultApi();
+        String connection = connection_example; // String | Websocket Connection parameter
+        String upgrade = upgrade_example; // String | Websocket Upgrade parameter
+        String secWebSocketKey = secWebSocketKey_example; // String | Websocket Sec-WebSocket-Key parameter
+        String type = type_example; // String |
+        String route = route_example; // String |
+        try {
+            apiInstance.markersJsonGet(connection, upgrade, secWebSocketKey, type, route);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DefaultApi#markersJsonGet");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                                </div>
+                                <!--
+  <div class="tab-pane" id="examples-Default-markersJsonGet-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                                <div class="tab-pane" id="examples-Default-markersJsonGet-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">String *connection = connection_example; // Websocket Connection parameter
+String *upgrade = upgrade_example; // Websocket Upgrade parameter
+String *secWebSocketKey = secWebSocketKey_example; // Websocket Sec-WebSocket-Key parameter
+String *type = type_example; //  (optional)
+String *route = route_example; //  (optional)
+
+DefaultApi *apiInstance = [[DefaultApi alloc] init];
+
+[apiInstance markersJsonGetWith:connection
+    upgrade:upgrade
+    secWebSocketKey:secWebSocketKey
+    type:type
+    route:route
+              completionHandler: ^(NSError* error) {
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                                </div>
+
+                                <div class="tab-pane" id="examples-Default-markersJsonGet-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var BackendApi = require('backend_api');
+
+var api = new BackendApi.DefaultApi()
+var connection = connection_example; // {{String}} Websocket Connection parameter
+var upgrade = upgrade_example; // {{String}} Websocket Upgrade parameter
+var secWebSocketKey = secWebSocketKey_example; // {{String}} Websocket Sec-WebSocket-Key parameter
+var opts = {
+  'type': type_example, // {{String}}
+  'route': route_example // {{String}}
+};
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+api.markersJsonGet(connection, upgrade, secWebSocketKey, opts, callback);
+</code></pre>
+                                </div>
+
+                                <!--<div class="tab-pane" id="examples-Default-markersJsonGet-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                                <div class="tab-pane" id="examples-Default-markersJsonGet-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class markersJsonGetExample
+    {
+        public void main()
+        {
+
+            var apiInstance = new DefaultApi();
+            var connection = connection_example;  // String | Websocket Connection parameter
+            var upgrade = upgrade_example;  // String | Websocket Upgrade parameter
+            var secWebSocketKey = secWebSocketKey_example;  // String | Websocket Sec-WebSocket-Key parameter
+            var type = type_example;  // String |  (optional)
+            var route = route_example;  // String |  (optional)
+
+            try
+            {
+                apiInstance.markersJsonGet(connection, upgrade, secWebSocketKey, type, route);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.markersJsonGet: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                                </div>
+
+                                <div class="tab-pane" id="examples-Default-markersJsonGet-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$api_instance = new Swagger\Client\ApiDefaultApi();
+$connection = connection_example; // String | Websocket Connection parameter
+$upgrade = upgrade_example; // String | Websocket Upgrade parameter
+$secWebSocketKey = secWebSocketKey_example; // String | Websocket Sec-WebSocket-Key parameter
+$type = type_example; // String |
+$route = route_example; // String |
+
+try {
+    $api_instance->markersJsonGet($connection, $upgrade, $secWebSocketKey, $type, $route);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->markersJsonGet: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                                </div>
+
+                                <div class="tab-pane" id="examples-Default-markersJsonGet-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::DefaultApi;
+
+my $api_instance = WWW::SwaggerClient::DefaultApi->new();
+my $connection = connection_example; # String | Websocket Connection parameter
+my $upgrade = upgrade_example; # String | Websocket Upgrade parameter
+my $secWebSocketKey = secWebSocketKey_example; # String | Websocket Sec-WebSocket-Key parameter
+my $type = type_example; # String |
+my $route = route_example; # String |
+
+eval {
+    $api_instance->markersJsonGet(connection => $connection, upgrade => $upgrade, secWebSocketKey => $secWebSocketKey, type => $type, route => $route);
+};
+if ($@) {
+    warn "Exception when calling DefaultApi->markersJsonGet: $@\n";
+}</code></pre>
+                                </div>
+
+                                <div class="tab-pane" id="examples-Default-markersJsonGet-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+connection = connection_example # String | Websocket Connection parameter
+upgrade = upgrade_example # String | Websocket Upgrade parameter
+secWebSocketKey = secWebSocketKey_example # String | Websocket Sec-WebSocket-Key parameter
+type = type_example # String |  (optional)
+route = route_example # String |  (optional)
+
+try:
+    api_instance.markers_json_get(connection, upgrade, secWebSocketKey, type=type, route=route)
+except ApiException as e:
+    print("Exception when calling DefaultApi->markersJsonGet: %s\n" % e)</code></pre>
+                                </div>
+                            </div>
+
+                            <h2>Parameters</h2>
+
+
+                            <div class="methodsubtabletitle">Header parameters</div>
+                            <table id="methodsubtable">
+                                <tr>
+                                    <th width="150px">Name</th>
+                                    <th>Description</th>
+                                </tr>
+                                <tr>
+                                    <td style="width:150px;">Connection*</td>
+                                    <td>
+
+
+                                        <div id="d2e199_markersJsonGet_connection">
+                                            <div class="json-schema-view">
+                                                <div class="primitive">
+                                                  <span class="type">
+                                                      String
+                                                  </span>
+
+                                                    <div class="inner description">
+                                                        Websocket Connection parameter
+                                                    </div>
+                                                </div>
+                                                <div class="inner required">
+                                                    Required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width:150px;">Upgrade*</td>
+                                    <td>
+
+
+                                        <div id="d2e199_markersJsonGet_upgrade">
+                                            <div class="json-schema-view">
+                                                <div class="primitive">
+                                                  <span class="type">
+                                                      String
+                                                  </span>
+
+                                                    <div class="inner description">
+                                                        Websocket Upgrade parameter
+                                                    </div>
+                                                </div>
+                                                <div class="inner required">
+                                                    Required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width:150px;">Sec-WebSocket-Key*</td>
+                                    <td>
+
+
+                                        <div id="d2e199_markersJsonGet_secWebSocketKey">
+                                            <div class="json-schema-view">
+                                                <div class="primitive">
+                                                  <span class="type">
+                                                      String
+                                                  </span>
+
+                                                    <div class="inner description">
+                                                        Websocket Sec-WebSocket-Key parameter
+                                                    </div>
+                                                </div>
+                                                <div class="inner required">
+                                                    Required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+
+
+                            <div class="methodsubtabletitle">Query parameters</div>
+                            <table id="methodsubtable">
+                                <tr>
+                                    <th width="150px">Name</th>
+                                    <th>Description</th>
+                                </tr>
+                                <tr>
+                                    <td style="width:150px;">type</td>
+                                    <td>
+
+
+                                        <div id="d2e199_markersJsonGet_type">
+                                            <div class="json-schema-view">
+                                                <div class="primitive">
+                                                <span class="type">
+                                                    String
+                                                </span>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width:150px;">route</td>
+                                    <td>
+
+
+                                        <div id="d2e199_markersJsonGet_route">
+                                            <div class="json-schema-view">
+                                                <div class="primitive">
+                                                <span class="type">
+                                                    String
+                                                </span>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <h2>Responses</h2>
+                            <h3> Status: 101 - Switching Protocols </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples">
+                                <li class="">
+                                    <a data-toggle="tab" href="#responses-markersJsonGet-101-headers">Headers</a>
+                                </li>
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane" id="responses-markersJsonGet-101-headers">
+                                    <table>
+                                        <tr>
+                                            <th width="150px">Name</th>
+                                            <th width="100px">Type</th>
+                                            <th width="100px">Format</th>
+                                            <th>Description</th>
+                                        </tr>
+                                        <tr>
+                                            <td>Connection</td>
+                                            <td>String</td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Upgrade</td>
+                                            <td>String</td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Sec-WebSocket-Accept</td>
+                                            <td>String</td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </article>
+                    </div>
+                    <hr>
                     <div id="api-Default-rootGet">
                         <article id="api-Default-rootGet-0" data-group="User" data-name="rootGet" data-version="0">
                             <div class="pull-left">
@@ -10993,7 +12113,6 @@
                             <div class="tab-content">
                                 <div class="tab-pane active" id="examples-Default-rootGet-0-curl">
                            <pre class="prettyprint"><code class="language-bsh">curl -X GET\
--H "Accept: text/plain"\
 "https://backend/"</code></pre>
                                 </div>
                                 <div class="tab-pane" id="examples-Default-rootGet-0-java">
@@ -11011,8 +12130,7 @@ public class DefaultApiExample {
 
         DefaultApi apiInstance = new DefaultApi();
         try {
-            'String' result = apiInstance.rootGet();
-            System.out.println(result);
+            apiInstance.rootGet();
         } catch (ApiException e) {
             System.err.println("Exception when calling DefaultApi#rootGet");
             e.printStackTrace();
@@ -11029,8 +12147,7 @@ public class DefaultApiExample {
     public static void main(String[] args) {
         DefaultApi apiInstance = new DefaultApi();
         try {
-            'String' result = apiInstance.rootGet();
-            System.out.println(result);
+            apiInstance.rootGet();
         } catch (ApiException e) {
             System.err.println("Exception when calling DefaultApi#rootGet");
             e.printStackTrace();
@@ -11047,10 +12164,7 @@ public class DefaultApiExample {
 DefaultApi *apiInstance = [[DefaultApi alloc] init];
 
 [apiInstance rootGetWithCompletionHandler:
-              ^('String' output, NSError* error) {
-                            if (output) {
-                                NSLog(@"%@", output);
-                            }
+              ^(NSError* error) {
                             if (error) {
                                 NSLog(@"Error: %@", error);
                             }
@@ -11066,7 +12180,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully. Returned data: ' + data);
+    console.log('API called successfully.');
   }
 };
 api.rootGet(callback);
@@ -11094,8 +12208,7 @@ namespace Example
 
             try
             {
-                'String' result = apiInstance.rootGet();
-                Debug.WriteLine(result);
+                apiInstance.rootGet();
             }
             catch (Exception e)
             {
@@ -11114,8 +12227,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $api_instance = new Swagger\Client\ApiDefaultApi();
 
 try {
-    $result = $api_instance->rootGet();
-    print_r($result);
+    $api_instance->rootGet();
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->rootGet: ', $e->getMessage(), PHP_EOL;
 }
@@ -11130,8 +12242,7 @@ use WWW::SwaggerClient::DefaultApi;
 my $api_instance = WWW::SwaggerClient::DefaultApi->new();
 
 eval {
-    my $result = $api_instance->rootGet();
-    print Dumper($result);
+    $api_instance->rootGet();
 };
 if ($@) {
     warn "Exception when calling DefaultApi->rootGet: $@\n";
@@ -11149,8 +12260,7 @@ from pprint import pprint
 api_instance = swagger_client.DefaultApi()
 
 try:
-    api_response = api_instance.root_get()
-    pprint(api_response)
+    api_instance.root_get()
 except ApiException as e:
     print("Exception when calling DefaultApi->rootGet: %s\n" % e)</code></pre>
                                 </div>
@@ -11160,314 +12270,6 @@ except ApiException as e:
 
 
                             <h2>Responses</h2>
-                            <h3> Status: 200 - OK </h3>
-
-                            <ul class="nav nav-tabs nav-tabs-examples">
-                                <li class="active">
-                                    <a data-toggle="tab" href="#responses-rootGet-200-schema">Schema</a>
-                                </li>
-
-                            </ul>
-
-                            <div class="tab-content" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-rootGet-200-schema">
-                                    <div id='responses-rootGet-200-schema-200'
-                                         style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
-                                        <script>
-                                            $(document).ready(function () {
-                                                var schemaWrapper = {
-                                                    "description": "OK",
-                                                    "content": {
-                                                        "text/plain": {
-                                                            "schema": {
-                                                                "type": "string",
-                                                                "x-content-type": "text/plain"
-                                                            },
-                                                            "examples": {
-                                                                "Example#1": {
-                                                                    "value": "Hello World!"
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-                                                };
-                                                var schema = schemaWrapper.content["text/plain"].schema;
-                                                if (schema.$ref != null) {
-                                                    schema = defsParser.$refs.get(schema.$ref);
-                                                } else {
-                                                    schemaWrapper.components = {};
-                                                    schemaWrapper.components.schemas = Object.assign({}, defs);
-                                                    $RefParser.dereference(schemaWrapper).catch(function (err) {
-                                                        console.log(err);
-                                                    });
-                                                }
-
-                                                //console.log(JSON.stringify(schema));
-                                                var view = new JSONSchemaView(schema, 3);
-                                                $('#responses-rootGet-200-schema-data').val(stringify(schema));
-                                                var result = $('#responses-rootGet-200-schema-200');
-                                                result.empty();
-                                                result.append(view.render());
-                                            });
-                                        </script>
-                                    </div>
-                                    <input id='responses-rootGet-200-schema-data' type='hidden' value=''></input>
-                                </div>
-                            </div>
-
-                        </article>
-                    </div>
-                    <hr>
-                    <div id="api-Default-rootPost">
-                        <article id="api-Default-rootPost-0" data-group="User" data-name="rootPost" data-version="0">
-                            <div class="pull-left">
-                                <h1>rootPost</h1>
-                                <p></p>
-                            </div>
-                            <div class="pull-right"></div>
-                            <div class="clearfix"></div>
-                            <p></p>
-                            <p class="marked"></p>
-                            <p></p>
-                            <br/>
-                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span
-                                    class="pln">/</span></code></pre>
-                            <p>
-                            <h3>Usage and SDK Samples</h3>
-                            </p>
-                            <ul class="nav nav-tabs nav-tabs-examples">
-                                <li class="active"><a href="#examples-Default-rootPost-0-curl">Curl</a></li>
-                                <li class=""><a href="#examples-Default-rootPost-0-java">Java</a></li>
-                                <li class=""><a href="#examples-Default-rootPost-0-android">Android</a></li>
-                                <!--<li class=""><a href="#examples-Default-rootPost-0-groovy">Groovy</a></li>-->
-                                <li class=""><a href="#examples-Default-rootPost-0-objc">Obj-C</a></li>
-                                <li class=""><a href="#examples-Default-rootPost-0-javascript">JavaScript</a></li>
-                                <!--<li class=""><a href="#examples-Default-rootPost-0-angular">Angular</a></li>-->
-                                <li class=""><a href="#examples-Default-rootPost-0-csharp">C#</a></li>
-                                <li class=""><a href="#examples-Default-rootPost-0-php">PHP</a></li>
-                                <li class=""><a href="#examples-Default-rootPost-0-perl">Perl</a></li>
-                                <li class=""><a href="#examples-Default-rootPost-0-python">Python</a></li>
-                            </ul>
-
-                            <div class="tab-content">
-                                <div class="tab-pane active" id="examples-Default-rootPost-0-curl">
-                           <pre class="prettyprint"><code class="language-bsh">curl -X POST\
--H "Accept: */*"\
-"https://backend/"</code></pre>
-                                </div>
-                                <div class="tab-pane" id="examples-Default-rootPost-0-java">
-                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
-import io.swagger.client.auth.*;
-import io.swagger.client.model.*;
-import io.swagger.client.api.DefaultApi;
-
-import java.io.File;
-import java.util.*;
-
-public class DefaultApiExample {
-
-    public static void main(String[] args) {
-
-        DefaultApi apiInstance = new DefaultApi();
-        try {
-            AuthResponse result = apiInstance.rootPost();
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#rootPost");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                                </div>
-
-                                <div class="tab-pane" id="examples-Default-rootPost-0-android">
-                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.DefaultApi;
-
-public class DefaultApiExample {
-
-    public static void main(String[] args) {
-        DefaultApi apiInstance = new DefaultApi();
-        try {
-            AuthResponse result = apiInstance.rootPost();
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#rootPost");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                                </div>
-                                <!--
-  <div class="tab-pane" id="examples-Default-rootPost-0-groovy">
-  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-  </div> -->
-                                <div class="tab-pane" id="examples-Default-rootPost-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">
-DefaultApi *apiInstance = [[DefaultApi alloc] init];
-
-[apiInstance rootPostWithCompletionHandler:
-              ^(AuthResponse output, NSError* error) {
-                            if (output) {
-                                NSLog(@"%@", output);
-                            }
-                            if (error) {
-                                NSLog(@"Error: %@", error);
-                            }
-                        }];
-</code></pre>
-                                </div>
-
-                                <div class="tab-pane" id="examples-Default-rootPost-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var BackendApi = require('backend_api');
-
-var api = new BackendApi.DefaultApi()
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-api.rootPost(callback);
-</code></pre>
-                                </div>
-
-                                <!--<div class="tab-pane" id="examples-Default-rootPost-0-angular">
-              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-            </div>-->
-                                <div class="tab-pane" id="examples-Default-rootPost-0-csharp">
-                              <pre class="prettyprint"><code class="language-cs">using System;
-using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
-
-namespace Example
-{
-    public class rootPostExample
-    {
-        public void main()
-        {
-
-            var apiInstance = new DefaultApi();
-
-            try
-            {
-                AuthResponse result = apiInstance.rootPost();
-                Debug.WriteLine(result);
-            }
-            catch (Exception e)
-            {
-                Debug.Print("Exception when calling DefaultApi.rootPost: " + e.Message );
-            }
-        }
-    }
-}
-</code></pre>
-                                </div>
-
-                                <div class="tab-pane" id="examples-Default-rootPost-0-php">
-                              <pre class="prettyprint"><code class="language-php"><&#63;php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-$api_instance = new Swagger\Client\ApiDefaultApi();
-
-try {
-    $result = $api_instance->rootPost();
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling DefaultApi->rootPost: ', $e->getMessage(), PHP_EOL;
-}
-?></code></pre>
-                                </div>
-
-                                <div class="tab-pane" id="examples-Default-rootPost-0-perl">
-                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
-use WWW::SwaggerClient::Configuration;
-use WWW::SwaggerClient::DefaultApi;
-
-my $api_instance = WWW::SwaggerClient::DefaultApi->new();
-
-eval {
-    my $result = $api_instance->rootPost();
-    print Dumper($result);
-};
-if ($@) {
-    warn "Exception when calling DefaultApi->rootPost: $@\n";
-}</code></pre>
-                                </div>
-
-                                <div class="tab-pane" id="examples-Default-rootPost-0-python">
-                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
-import time
-import swagger_client
-from swagger_client.rest import ApiException
-from pprint import pprint
-
-# create an instance of the API class
-api_instance = swagger_client.DefaultApi()
-
-try:
-    api_response = api_instance.root_post()
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling DefaultApi->rootPost: %s\n" % e)</code></pre>
-                                </div>
-                            </div>
-
-                            <h2>Parameters</h2>
-
-
-                            <h2>Responses</h2>
-                            <h3> Status: 200 - OK </h3>
-
-                            <ul class="nav nav-tabs nav-tabs-examples">
-                                <li class="active">
-                                    <a data-toggle="tab" href="#responses-rootPost-200-schema">Schema</a>
-                                </li>
-
-                            </ul>
-
-                            <div class="tab-content" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-rootPost-200-schema">
-                                    <div id='responses-rootPost-200-schema-200'
-                                         style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
-                                        <script>
-                                            $(document).ready(function () {
-                                                var schemaWrapper = {
-                                                    "description": "OK",
-                                                    "content": {
-                                                        "*/*": {
-                                                            "schema": {
-                                                                "$ref": "#/components/schemas/AuthResponse"
-                                                            }
-                                                        }
-                                                    }
-                                                };
-                                                var schema = schemaWrapper.content["*/*"].schema;
-                                                if (schema.$ref != null) {
-                                                    schema = defsParser.$refs.get(schema.$ref);
-                                                } else {
-                                                    schemaWrapper.components = {};
-                                                    schemaWrapper.components.schemas = Object.assign({}, defs);
-                                                    $RefParser.dereference(schemaWrapper).catch(function (err) {
-                                                        console.log(err);
-                                                    });
-                                                }
-
-                                                //console.log(JSON.stringify(schema));
-                                                var view = new JSONSchemaView(schema, 3);
-                                                $('#responses-rootPost-200-schema-data').val(stringify(schema));
-                                                var result = $('#responses-rootPost-200-schema-200');
-                                                result.empty();
-                                                result.append(view.render());
-                                            });
-                                        </script>
-                                    </div>
-                                    <input id='responses-rootPost-200-schema-data' type='hidden' value=''></input>
-                                </div>
-                            </div>
-
                         </article>
                     </div>
                     <hr>
@@ -11480,7 +12282,7 @@ except ApiException as e:
                             <div class="pull-right"></div>
                             <div class="clearfix"></div>
                             <p></p>
-                            <p class="marked">asdasdasdasd</p>
+                            <p class="marked"></p>
                             <p></p>
                             <br/>
                             <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span
@@ -11839,7 +12641,7 @@ public class DefaultApiExample {
         DefaultApi apiInstance = new DefaultApi();
         Integer id = 56; // Integer |
         try {
-            Route result = apiInstance.routesIdGet(id);
+            FullRoute result = apiInstance.routesIdGet(id);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DefaultApi#routesIdGet");
@@ -11858,7 +12660,7 @@ public class DefaultApiExample {
         DefaultApi apiInstance = new DefaultApi();
         Integer id = 56; // Integer |
         try {
-            Route result = apiInstance.routesIdGet(id);
+            FullRoute result = apiInstance.routesIdGet(id);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DefaultApi#routesIdGet");
@@ -11877,7 +12679,7 @@ public class DefaultApiExample {
 DefaultApi *apiInstance = [[DefaultApi alloc] init];
 
 [apiInstance routesIdGetWith:id
-              completionHandler: ^(Route output, NSError* error) {
+              completionHandler: ^(FullRoute output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
                             }
@@ -11927,7 +12729,7 @@ namespace Example
 
             try
             {
-                Route result = apiInstance.routesIdGet(id);
+                FullRoute result = apiInstance.routesIdGet(id);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -12099,7 +12901,7 @@ except ApiException as e:
                                                     "content": {
                                                         "*/*": {
                                                             "schema": {
-                                                                "$ref": "#/components/schemas/Route"
+                                                                "$ref": "#/components/schemas/FullRoute"
                                                             }
                                                         }
                                                     }
@@ -12175,347 +12977,6 @@ except ApiException as e:
                                         </script>
                                     </div>
                                     <input id='responses-routesIdGet-404-schema-data' type='hidden' value=''></input>
-                                </div>
-                            </div>
-
-                        </article>
-                    </div>
-                    <hr>
-                    <div id="api-Default-userLoginGet">
-                        <article id="api-Default-userLoginGet-0" data-group="User" data-name="userLoginGet"
-                                 data-version="0">
-                            <div class="pull-left">
-                                <h1>userLoginGet</h1>
-                                <p></p>
-                            </div>
-                            <div class="pull-right"></div>
-                            <div class="clearfix"></div>
-                            <p></p>
-                            <p class="marked"></p>
-                            <p></p>
-                            <br/>
-                            <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span
-                                    class="pln">/user/{login}</span></code></pre>
-                            <p>
-                            <h3>Usage and SDK Samples</h3>
-                            </p>
-                            <ul class="nav nav-tabs nav-tabs-examples">
-                                <li class="active"><a href="#examples-Default-userLoginGet-0-curl">Curl</a></li>
-                                <li class=""><a href="#examples-Default-userLoginGet-0-java">Java</a></li>
-                                <li class=""><a href="#examples-Default-userLoginGet-0-android">Android</a></li>
-                                <!--<li class=""><a href="#examples-Default-userLoginGet-0-groovy">Groovy</a></li>-->
-                                <li class=""><a href="#examples-Default-userLoginGet-0-objc">Obj-C</a></li>
-                                <li class=""><a href="#examples-Default-userLoginGet-0-javascript">JavaScript</a></li>
-                                <!--<li class=""><a href="#examples-Default-userLoginGet-0-angular">Angular</a></li>-->
-                                <li class=""><a href="#examples-Default-userLoginGet-0-csharp">C#</a></li>
-                                <li class=""><a href="#examples-Default-userLoginGet-0-php">PHP</a></li>
-                                <li class=""><a href="#examples-Default-userLoginGet-0-perl">Perl</a></li>
-                                <li class=""><a href="#examples-Default-userLoginGet-0-python">Python</a></li>
-                            </ul>
-
-                            <div class="tab-content">
-                                <div class="tab-pane active" id="examples-Default-userLoginGet-0-curl">
-                           <pre class="prettyprint"><code class="language-bsh">curl -X GET\
--H "Accept: */*"\
-"https://backend/user/{login}"</code></pre>
-                                </div>
-                                <div class="tab-pane" id="examples-Default-userLoginGet-0-java">
-                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
-import io.swagger.client.auth.*;
-import io.swagger.client.model.*;
-import io.swagger.client.api.DefaultApi;
-
-import java.io.File;
-import java.util.*;
-
-public class DefaultApiExample {
-
-    public static void main(String[] args) {
-
-        DefaultApi apiInstance = new DefaultApi();
-        String login = login_example; // String |
-        try {
-            User result = apiInstance.userLoginGet(login);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#userLoginGet");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                                </div>
-
-                                <div class="tab-pane" id="examples-Default-userLoginGet-0-android">
-                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.DefaultApi;
-
-public class DefaultApiExample {
-
-    public static void main(String[] args) {
-        DefaultApi apiInstance = new DefaultApi();
-        String login = login_example; // String |
-        try {
-            User result = apiInstance.userLoginGet(login);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#userLoginGet");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                                </div>
-                                <!--
-  <div class="tab-pane" id="examples-Default-userLoginGet-0-groovy">
-  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-  </div> -->
-                                <div class="tab-pane" id="examples-Default-userLoginGet-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">String *login = login_example; //
-
-DefaultApi *apiInstance = [[DefaultApi alloc] init];
-
-[apiInstance userLoginGetWith:login
-              completionHandler: ^(User output, NSError* error) {
-                            if (output) {
-                                NSLog(@"%@", output);
-                            }
-                            if (error) {
-                                NSLog(@"Error: %@", error);
-                            }
-                        }];
-</code></pre>
-                                </div>
-
-                                <div class="tab-pane" id="examples-Default-userLoginGet-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var BackendApi = require('backend_api');
-
-var api = new BackendApi.DefaultApi()
-var login = login_example; // {{String}}
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-api.userLoginGet(login, callback);
-</code></pre>
-                                </div>
-
-                                <!--<div class="tab-pane" id="examples-Default-userLoginGet-0-angular">
-              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-            </div>-->
-                                <div class="tab-pane" id="examples-Default-userLoginGet-0-csharp">
-                              <pre class="prettyprint"><code class="language-cs">using System;
-using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
-
-namespace Example
-{
-    public class userLoginGetExample
-    {
-        public void main()
-        {
-
-            var apiInstance = new DefaultApi();
-            var login = login_example;  // String |
-
-            try
-            {
-                User result = apiInstance.userLoginGet(login);
-                Debug.WriteLine(result);
-            }
-            catch (Exception e)
-            {
-                Debug.Print("Exception when calling DefaultApi.userLoginGet: " + e.Message );
-            }
-        }
-    }
-}
-</code></pre>
-                                </div>
-
-                                <div class="tab-pane" id="examples-Default-userLoginGet-0-php">
-                              <pre class="prettyprint"><code class="language-php"><&#63;php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-$api_instance = new Swagger\Client\ApiDefaultApi();
-$login = login_example; // String |
-
-try {
-    $result = $api_instance->userLoginGet($login);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling DefaultApi->userLoginGet: ', $e->getMessage(), PHP_EOL;
-}
-?></code></pre>
-                                </div>
-
-                                <div class="tab-pane" id="examples-Default-userLoginGet-0-perl">
-                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
-use WWW::SwaggerClient::Configuration;
-use WWW::SwaggerClient::DefaultApi;
-
-my $api_instance = WWW::SwaggerClient::DefaultApi->new();
-my $login = login_example; # String |
-
-eval {
-    my $result = $api_instance->userLoginGet(login => $login);
-    print Dumper($result);
-};
-if ($@) {
-    warn "Exception when calling DefaultApi->userLoginGet: $@\n";
-}</code></pre>
-                                </div>
-
-                                <div class="tab-pane" id="examples-Default-userLoginGet-0-python">
-                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
-import time
-import swagger_client
-from swagger_client.rest import ApiException
-from pprint import pprint
-
-# create an instance of the API class
-api_instance = swagger_client.DefaultApi()
-login = login_example # String |
-
-try:
-    api_response = api_instance.user_login_get(login)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling DefaultApi->userLoginGet: %s\n" % e)</code></pre>
-                                </div>
-                            </div>
-
-                            <h2>Parameters</h2>
-
-                            <div class="methodsubtabletitle">Path parameters</div>
-                            <table id="methodsubtable">
-                                <tr>
-                                    <th width="150px">Name</th>
-                                    <th>Description</th>
-                                </tr>
-                                <tr>
-                                    <td style="width:150px;">login*</td>
-                                    <td>
-
-
-                                        <div id="d2e199_userLoginGet_login">
-                                            <div class="json-schema-view">
-                                                <div class="primitive">
-                                                  <span class="type">
-                                                      String
-                                                  </span>
-
-                                                </div>
-                                                <div class="inner required">
-                                                    Required
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </table>
-
-
-                            <h2>Responses</h2>
-                            <h3> Status: 200 - OK </h3>
-
-                            <ul class="nav nav-tabs nav-tabs-examples">
-                                <li class="active">
-                                    <a data-toggle="tab" href="#responses-userLoginGet-200-schema">Schema</a>
-                                </li>
-
-                            </ul>
-
-                            <div class="tab-content" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-userLoginGet-200-schema">
-                                    <div id='responses-userLoginGet-200-schema-200'
-                                         style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
-                                        <script>
-                                            $(document).ready(function () {
-                                                var schemaWrapper = {
-                                                    "description": "OK",
-                                                    "content": {
-                                                        "*/*": {
-                                                            "schema": {
-                                                                "$ref": "#/components/schemas/User"
-                                                            }
-                                                        }
-                                                    }
-                                                };
-                                                var schema = schemaWrapper.content["*/*"].schema;
-                                                if (schema.$ref != null) {
-                                                    schema = defsParser.$refs.get(schema.$ref);
-                                                } else {
-                                                    schemaWrapper.components = {};
-                                                    schemaWrapper.components.schemas = Object.assign({}, defs);
-                                                    $RefParser.dereference(schemaWrapper).catch(function (err) {
-                                                        console.log(err);
-                                                    });
-                                                }
-
-                                                //console.log(JSON.stringify(schema));
-                                                var view = new JSONSchemaView(schema, 3);
-                                                $('#responses-userLoginGet-200-schema-data').val(stringify(schema));
-                                                var result = $('#responses-userLoginGet-200-schema-200');
-                                                result.empty();
-                                                result.append(view.render());
-                                            });
-                                        </script>
-                                    </div>
-                                    <input id='responses-userLoginGet-200-schema-data' type='hidden' value=''></input>
-                                </div>
-                            </div>
-
-                            <h3> Status: 404 - Not Found </h3>
-
-                            <ul class="nav nav-tabs nav-tabs-examples">
-                                <li class="active">
-                                    <a data-toggle="tab" href="#responses-userLoginGet-404-schema">Schema</a>
-                                </li>
-
-                            </ul>
-
-                            <div class="tab-content" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-userLoginGet-404-schema">
-                                    <div id='responses-userLoginGet-404-schema-404'
-                                         style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
-                                        <script>
-                                            $(document).ready(function () {
-                                                var schemaWrapper = {
-                                                    "description": "Not Found",
-                                                    "content": {
-                                                        "*/*": {
-                                                            "schema": {
-                                                                "type": "object",
-                                                                "x-content-type": "*/*"
-                                                            }
-                                                        }
-                                                    }
-                                                };
-                                                var schema = schemaWrapper.content["*/*"].schema;
-                                                if (schema.$ref != null) {
-                                                    schema = defsParser.$refs.get(schema.$ref);
-                                                } else {
-                                                    schemaWrapper.components = {};
-                                                    schemaWrapper.components.schemas = Object.assign({}, defs);
-                                                    $RefParser.dereference(schemaWrapper).catch(function (err) {
-                                                        console.log(err);
-                                                    });
-                                                }
-
-                                                //console.log(JSON.stringify(schema));
-                                                var view = new JSONSchemaView(schema, 3);
-                                                $('#responses-userLoginGet-404-schema-data').val(stringify(schema));
-                                                var result = $('#responses-userLoginGet-404-schema-404');
-                                                result.empty();
-                                                result.append(view.render());
-                                            });
-                                        </script>
-                                    </div>
-                                    <input id='responses-userLoginGet-404-schema-data' type='hidden' value=''></input>
                                 </div>
                             </div>
 

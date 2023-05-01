@@ -12,14 +12,17 @@ class UserRepositoryImpl(
     override fun createUser(
         login: String,
         name: String,
-        passwordHash: String
-    ) = userStorage.create(login, name, passwordHash).asUser()
+        passwordHash: String,
+        userRole: UserRole
+    ) = userStorage.create(login, name, passwordHash, userRole).asUser()
 
     override fun getUser(login: String) = userStorage.findUserByLogin(login)?.asUser()
 
     override fun getUser(id: Int): User? = userStorage.findUserById(id)?.asUser()
 
     override fun getFullUser(login: String): FullUser? = userStorage.findUserByLogin(login)
+
+    override fun getFullUser(id: Int): FullUser? = userStorage.findUserById(id)
 
     override fun getUserRole(id: Int): UserRole? = userStorage.findUserRole(id)
 }
