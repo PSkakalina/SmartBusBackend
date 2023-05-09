@@ -22,11 +22,4 @@ fun Application.module() {
         anyHost()
         allowHeader(HttpHeaders.ContentType)
     }
-
-//    GlobalScope.launch {
-//        val repo = get<TransportMarkerRepository>()
-//
-//        val m = repo.getAllMarkers()
-//        println(m)
-//    }
 }

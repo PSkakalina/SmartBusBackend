@@ -5,6 +5,7 @@ import org.jetbrains.exposed.sql.transactions.transaction
 import ru.tnsk.backend.data.db.mappers.asFullUser
 import ru.tnsk.backend.data.db.psql.entity.UserEntity
 import ru.tnsk.backend.data.db.psql.table.UsersTable
+import ru.tnsk.backend.domain.model.account.FullUser
 import ru.tnsk.backend.domain.model.account.UserRole
 
 class UserStorage(
@@ -34,5 +35,9 @@ class UserStorage(
 
     fun findUserRole(id: Int): UserRole? = transaction(db) {
         UserEntity.findById(id)?.role
+    }
+
+    fun getAllUsers(): List<FullUser> = transaction(db) {
+        UserEntity.all().map { it.asFullUser() }
     }
 }

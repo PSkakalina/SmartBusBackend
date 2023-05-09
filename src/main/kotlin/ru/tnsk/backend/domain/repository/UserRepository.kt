@@ -23,4 +23,6 @@ interface UserRepository {
     fun getFullUser(id: Int): FullUser?
 
     fun getUserRole(id: Int): UserRole?
+
+    fun getAllUsers(): List<FullUser>
 }

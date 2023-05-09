@@ -34,7 +34,7 @@ class TransportMarkerRepository(
                 .entries
                 .forEach { (transportType, routes) ->
                     routes
-                        .chunked(5)
+                        .chunked(MAGIC_FIVE)
                         .forEach { chunk ->
                             val query = chunk.map { NskgtStorage.RouteQuery(it.transportType, it.route) }
 
@@ -55,5 +55,9 @@ class TransportMarkerRepository(
                 cachedMarkers = it
             }
         }
+    }
+
+    private companion object {
+        const val MAGIC_FIVE = 5
     }
 }

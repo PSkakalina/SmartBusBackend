@@ -1,4 +1,4 @@
-package ru.tnsk.backend.routes.imoprt
+package ru.tnsk.backend.routes.importdata
 
 import io.ktor.http.*
 import io.ktor.server.application.*
@@ -9,7 +9,7 @@ import org.koin.ktor.ext.get
 import ru.tnsk.backend.data.repository.ImportRouteRepository
 import ru.tnsk.backend.domain.model.account.UserRole
 import ru.tnsk.backend.domain.repository.UserRepository
-import ru.tnsk.backend.routes.requireUser
+import ru.tnsk.backend.routes.utils.requireUser
 
 fun Routing.importRoutes(
     importRouteRepository: ImportRouteRepository = get(),

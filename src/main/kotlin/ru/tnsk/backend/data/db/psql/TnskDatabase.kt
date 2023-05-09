@@ -37,7 +37,8 @@ value class TnskDatabase(val db: Database) {
                 StopsTable,
                 RoutesTable,
                 TracesTable,
-                RouteTraceTable
+                RouteTraceTable,
+                DriversTable
             )
         }
     }
