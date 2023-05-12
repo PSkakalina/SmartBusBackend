@@ -7,6 +7,8 @@ val postgresql_version: String by project
 val koin_version: String by project
 val kmongo_version: String by project
 val jbcrypt_version: String by project
+val joda_version: String by project
+val klock_version: String by project
 
 plugins {
     kotlin("jvm") version "1.8.10"
@@ -55,6 +57,7 @@ dependencies {
     implementation("org.jetbrains.exposed:exposed-jdbc:$exposed_version")
     implementation("org.jetbrains.exposed:exposed-java-time:$exposed_version")
     implementation("org.jetbrains.exposed:exposed-dao:$exposed_version")
+
     implementation("org.postgresql:postgresql:$postgresql_version")
     implementation("com.zaxxer:HikariCP:$hikari_version")
 
@@ -65,4 +68,7 @@ dependencies {
     implementation("org.mindrot:jbcrypt:$jbcrypt_version")
 
     implementation("ch.qos.logback:logback-classic:$logback_version")
+
+    implementation("joda-time:joda-time:$joda_version")
+    implementation("com.soywiz.korlibs.klock:klock:$klock_version")
 }

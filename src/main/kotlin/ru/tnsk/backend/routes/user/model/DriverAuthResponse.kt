@@ -6,6 +6,6 @@ import ru.tnsk.backend.domain.model.account.Token
 
 @Serializable
 data class DriverAuthResponse(
-    val diver: Driver,
+    val driver: Driver,
     val token: Token
 )

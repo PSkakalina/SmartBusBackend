@@ -15,6 +15,10 @@ suspend fun PipelineContext<Unit, ApplicationCall>.requireUser(): User = user ?:
 val PipelineContext<Unit, ApplicationCall>.user: User?
     get() = call.authentication.principal()
 
-suspend inline fun PipelineContext<*, ApplicationCall>.unauthorized() {
+suspend fun PipelineContext<*, ApplicationCall>.unauthorized() {
     call.respond(HttpStatusCode.Unauthorized)
+}
+
+suspend fun PipelineContext<*, ApplicationCall>.badRequest(error: String = "") {
+    call.respond(HttpStatusCode.BadRequest, error)
 }

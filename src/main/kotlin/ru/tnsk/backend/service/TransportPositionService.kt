@@ -3,13 +3,15 @@ package ru.tnsk.backend.service
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
+import ru.tnsk.backend.data.db.psql.storage.TransportHistoryStorage
 import ru.tnsk.backend.data.repository.TransportMarkerRepository
 import kotlin.time.Duration.Companion.minutes
 
 class TransportPositionService(
-    private val transportMarkerRepository: TransportMarkerRepository
+    private val transportMarkerRepository: TransportMarkerRepository,
+    private val transportHistoryStorage: TransportHistoryStorage
 ) {
-    var runing: Boolean = false
+    private var runing: Boolean = false
 
     suspend fun start() {
         runing = true
@@ -17,6 +19,11 @@ class TransportPositionService(
             while (runing) {
                 try {
                     val markers = transportMarkerRepository.getAllMarkers(true)
+
+                    markers.forEach {
+                        transportHistoryStorage.create(it)
+                    }
+
                     println("TransportPositionService: ${markers.size}")
                     // todo sleep at night
                     delay(1.minutes)

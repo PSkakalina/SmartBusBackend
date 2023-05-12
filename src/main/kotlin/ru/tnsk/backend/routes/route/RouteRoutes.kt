@@ -8,10 +8,13 @@ import io.ktor.util.pipeline.*
 import org.koin.ktor.ext.get
 import ru.tnsk.backend.data.repository.RouteRepository
 import ru.tnsk.backend.domain.model.transport.TransportType
+import ru.tnsk.backend.domain.usecase.SearchQueryProcessor
 import ru.tnsk.backend.routes.route.model.AllRoutesResponse
+import ru.tnsk.backend.routes.utils.badRequest
 
 fun Routing.routeRoutes(
-    routeRepository: RouteRepository = get()
+    routeRepository: RouteRepository = get(),
+    searchQueryProcessor: SearchQueryProcessor = get()
 ) {
     val route = "routes"
 
@@ -31,7 +34,7 @@ fun Routing.routeRoutes(
             return
         }
 
-        routeRepository.findRoute(transportType, route)?.let {
+        routeRepository.findRoute(route, transportType)?.let {
             call.respond(it)
         } ?: call.respond(HttpStatusCode.NotFound)
     }
@@ -54,5 +57,14 @@ fun Routing.routeRoutes(
         routeRepository.findFullRoute(id)?.let {
             call.respond(it)
         } ?: call.respond(HttpStatusCode.NotFound)
+    }
+
+    get("$route/search") {
+        val query = call.request.queryParameters["query"] ?: return@get badRequest("No query found")
+        val type = call.request.queryParameters["type"]?.toIntOrNull()
+
+        val routes = searchQueryProcessor.process(query, type)
+
+        if (routes.isEmpty()) call.respond(HttpStatusCode.NotFound) else call.respond(routes)
     }
 }

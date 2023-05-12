@@ -4,5 +4,5 @@ import org.koin.dsl.module
 import ru.tnsk.backend.service.TransportPositionService
 
 val serviceModule = module {
-    single { TransportPositionService(get()) }
+    single { TransportPositionService(get(), get()) }
 }

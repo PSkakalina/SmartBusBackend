@@ -2,12 +2,12 @@
 
 package ru.tnsk.backend.data.network.models
 
+import com.soywiz.klock.DateTimeTz
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.UseSerializers
 import ru.tnsk.backend.core.serializers.NskgtDateSerializer
 import ru.tnsk.backend.domain.model.transport.Direction
-import java.util.*
 
 @Serializable
 data class MarkersResponse(val markers: List<Marker>) {
@@ -22,7 +22,7 @@ data class MarkersResponse(val markers: List<Marker>) {
         val lat: Double,
         val lng: Double,
         @SerialName("time_nav")
-        val timeNav: Date,
+        val timeNav: DateTimeTz,
         @SerialName("id_typetr")
         val idTypetr: Int, //WTF
         val azimuth: Int,

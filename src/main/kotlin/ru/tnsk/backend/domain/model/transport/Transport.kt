@@ -1,12 +1,12 @@
-@file:UseSerializers(NskgtDateSerializer::class)
+@file:UseSerializers(DateTimeTzSerializer::class)
 
 package ru.tnsk.backend.domain.model.transport
 
+import com.soywiz.klock.DateTimeTz
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.UseSerializers
-import ru.tnsk.backend.core.serializers.NskgtDateSerializer
+import ru.tnsk.backend.core.serializers.DateTimeTzSerializer
 import ru.tnsk.backend.domain.model.common.LatLng
-import java.util.*
 
 @Serializable
 data class Transport(
@@ -18,7 +18,7 @@ data class Transport(
     val direction: Direction,
     val latLng: LatLng,
     val azimuth: Int,
-    val timeNav: Date,
+    val timeNav: DateTimeTz,
     val idTypetr: Int, //WTF
     val rasp: String,
     val speed: Double,

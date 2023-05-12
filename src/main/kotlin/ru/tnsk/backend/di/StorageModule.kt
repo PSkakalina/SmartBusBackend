@@ -11,6 +11,7 @@ val storageModule = module {
     factory { StopStorage(get()) }
     factory { NskgtStorage(get()) }
     factory { DriverStorage(get()) }
+    factory { TransportHistoryStorage(get()) }
 }
 
 

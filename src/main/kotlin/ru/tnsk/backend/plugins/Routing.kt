@@ -9,6 +9,7 @@ import io.ktor.server.routing.*
 import ru.tnsk.backend.routes.driver.driverRoutes
 import ru.tnsk.backend.routes.importdata.importRoutes
 import ru.tnsk.backend.routes.route.routeRoutes
+import ru.tnsk.backend.routes.transport.transportRoutes
 import ru.tnsk.backend.routes.user.accountRoutes
 
 fun Application.configureRouting() {
@@ -27,5 +28,6 @@ fun Application.configureRouting() {
         accountRoutes()
         routeRoutes()
         driverRoutes()
+        transportRoutes()
     }
 }

@@ -30,6 +30,12 @@ class RouteRepository(
 
     fun findFullRoute(id: Int): FullRoute? = findFullRoutesCache.get(id)
 
-    fun findRoute(transportType: TransportType, route: String): Route? =
+    fun findRoute(route: String, transportType: TransportType): Route? =
         routeStorage.findRoute(transportType, route)
+
+    fun findRoutes(route: String, transportType: TransportType? = null): List<Route> {
+        return transportType?.let {
+            routeStorage.findRoutes(route, it)
+        } ?: routeStorage.findRoutes(route)
+    }
 }
