@@ -8,6 +8,7 @@ import ru.tnsk.backend.core.utils.zoneOffset
 import ru.tnsk.backend.data.db.mappers.asTransport
 import ru.tnsk.backend.data.db.psql.entity.TransportHistoryEntity
 import ru.tnsk.backend.data.db.psql.table.RoutesTable
+import ru.tnsk.backend.data.db.psql.table.TransportHistoryTable
 import ru.tnsk.backend.domain.model.transport.Transport
 
 
@@ -37,7 +38,11 @@ class TransportHistoryStorage(
         }.asTransport()
     }
 
-    fun getAll() = transaction(db) {
-        TransportHistoryEntity.all().limit(10000).map { it.asTransport() }
+    fun getAll(limit: Int) = transaction(db) {
+        TransportHistoryEntity.all().limit(limit).map { it.asTransport() }
+    }
+
+    fun find(routeId: Int) = transaction(db) {
+        TransportHistoryEntity.find { TransportHistoryTable.route eq routeId }.map { it.asTransport() }.toList()
     }
 }

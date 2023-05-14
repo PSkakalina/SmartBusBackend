@@ -10,4 +10,5 @@ val repositoryModule = module {
     factory<RouteRepository> { RouteRepository(get()) }
     factory<DriverRepository> { DriverRepository(get()) }
     single<TransportMarkerRepository> { TransportMarkerRepository(get(), get()) }
+    single<TransportHistoryRepository> { TransportHistoryRepository(get()) }
 }
