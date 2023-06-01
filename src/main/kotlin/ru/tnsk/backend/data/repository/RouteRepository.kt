@@ -6,36 +6,62 @@ import ru.tnsk.backend.domain.model.transport.FullRoute
 import ru.tnsk.backend.domain.model.transport.Route
 import ru.tnsk.backend.domain.model.transport.TransportType
 
+/**
+ * Репозиторий маршрутов
+ */
 class RouteRepository(
     private val routeStorage: RouteStorage
 ) {
-
+    /**
+     * Кэш для запросов по получению маршрутов по id
+     */
     private val findRouteCache = Caffeine.newBuilder()
         .maximumSize(140)
         .build<Int, Route> { routeStorage.findRoute(it) }
 
+    /**
+     * Кэш для получения всех маршутов
+     */
     private val allRoutesCache = Caffeine.newBuilder()
-        .maximumSize(140)
+        .maximumSize(1)
         .build<Unit, List<Route>> { routeStorage.getAllRoutes() }
 
+    /**
+     * Кэш для получения полного маршрута по id
+     */
     private val findFullRoutesCache = Caffeine.newBuilder()
         .maximumSize(140)
         .build<Int, FullRoute> { routeStorage.findFullRoute(it, true) }
 
+    /**
+     * Запрос всех маршрутов
+     */
     fun getRoutes(): List<Route> {
         return allRoutesCache.get(Unit)
     }
 
+    /**
+     * Поиск маршрута по id
+     */
     fun findRoute(id: Int): Route? = findRouteCache.get(id)
 
+    /**
+     * Поиск полного маршрута по id
+     */
     fun findFullRoute(id: Int): FullRoute? = findFullRoutesCache.get(id)
 
-    fun findRoute(route: String, transportType: TransportType): Route? =
-        routeStorage.findRoute(transportType, route)
+    /**
+     * поиск маршрута по внутреннему названию и типу транспорта
+     */
+    fun findRoute(internalRouteName: String, transportType: TransportType): Route? =
+        routeStorage.findRoute(transportType, internalRouteName)
 
-    fun findRoutes(route: String, transportType: TransportType? = null): List<Route> {
+    /**
+     * поиск маршрута по названию и типу транспорта
+     */
+    fun findRoutes(routeName: String, transportType: TransportType? = null): List<Route> {
         return transportType?.let {
-            routeStorage.findRoutes(route, it)
-        } ?: routeStorage.findRoutes(route)
+            routeStorage.findRoutes(routeName, it)
+        } ?: routeStorage.findRoutes(routeName)
     }
 }

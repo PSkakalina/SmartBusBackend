@@ -9,7 +9,11 @@ import ru.tnsk.backend.data.db.psql.entity.DriverEntity
 import ru.tnsk.backend.data.db.psql.table.DriversTable
 import ru.tnsk.backend.data.db.psql.table.RoutesTable
 import ru.tnsk.backend.data.db.psql.table.UsersTable
+import ru.tnsk.backend.domain.model.account.Driver
 
+/**
+ * Хранилище данных водителей
+ */
 class DriverStorage(
     private val db: Database
 ) {
@@ -17,7 +21,7 @@ class DriverStorage(
         userId: Int,
         routeId: Int? = null,
         notificationToken: String? = null,
-    ) = transaction(db) {
+    ): Driver = transaction(db) {
         DriverEntity.new {
             this.userId = EntityID(userId, UsersTable)
             routeId?.let {
@@ -39,7 +43,7 @@ class DriverStorage(
     fun setRouteId(
         id: Int,
         routeId: Int?
-    ) = transaction(db) {
+    ): Driver? = transaction(db) {
         DriversTable.update({ DriversTable.id eq id }) {
             it[DriversTable.routeId] = routeId?.let { rId -> EntityID(rId, RoutesTable) }
         }
@@ -47,11 +51,11 @@ class DriverStorage(
         findDriver(id, true)
     }
 
-    fun findDriver(id: Int, fetchRoute: Boolean) = transaction(db) {
+    fun findDriver(id: Int, fetchRoute: Boolean): Driver? = transaction(db) {
         DriverEntity.findById(id)?.asDriver(fetchRoute)
     }
 
-    fun findDriverByUserId(userId: Int, fetchRoute: Boolean) = transaction(db) {
+    fun findDriverByUserId(userId: Int, fetchRoute: Boolean): Driver? = transaction(db) {
         DriverEntity.find { DriversTable.userId eq userId }.firstOrNull()?.asDriver(fetchRoute)
     }
 }

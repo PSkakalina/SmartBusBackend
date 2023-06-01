@@ -5,8 +5,8 @@ import ru.tnsk.backend.domain.model.common.LatLng
 
 @Serializable
 data class Stop(
-    val id: Int,
-    val name: String,
-    val latLng: LatLng,
+    val id: Int, // Уникальный идентификатор
+    val name: String, // Название
+    val latLng: LatLng, // Координаты
     val len: Int
 )

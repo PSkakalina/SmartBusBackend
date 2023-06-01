@@ -10,18 +10,18 @@ import ru.tnsk.backend.domain.model.common.LatLng
 
 @Serializable
 data class Transport(
-    val name: String,
-    val route: String,
-    val routeId: Int,
-    val transportType: TransportType,
+    val name: String, //  название маршрута
+    val route: String, // внутреннее название маршрута
+    val routeId: Int, // ID маршрута
+    val transportType: TransportType, // тип транспорта
     val graph: Int,
-    val direction: Direction,
-    val latLng: LatLng,
-    val azimuth: Int,
-    val timeNav: DateTimeTz,
-    val idTypetr: Int, //WTF
-    val rasp: String,
-    val speed: Double,
-    val segmentOrder: Int,
+    val direction: Direction, // направление
+    val latLng: LatLng, // координаты
+    val azimuth: Int, // азимут
+    val timeNav: DateTimeTz, // время получения координаты
+    val idTypetr: Int, // тип транспорта
+    val rasp: String, // будущее расписание
+    val speed: Double, // скорость
+    val segmentOrder: Int, // текущий сегмент
     val ramp: Int
 )

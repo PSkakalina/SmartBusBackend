@@ -4,10 +4,10 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Route(
-    val id: Int,
-    val route: String,
-    val name: String,
-    val transportType: TransportType,
-    val firstStop: Stop,
-    val lastStop: Stop
+    val id: Int, // уникальный идентификатор
+    val route: String, // внутреннее название маршрута
+    val name: String, // название маршрута
+    val transportType: TransportType, // тип транспорта
+    val firstStop: Stop, // первая остановка
+    val lastStop: Stop // последняя остановка
 )
